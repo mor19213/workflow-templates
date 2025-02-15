@@ -1,0 +1,17 @@
+name: Deploy component
+
+on:
+  workflow_call:
+
+jobs:
+  build-docker-images:
+    uses: ./.github/workflows/build-images.yaml
+  
+  # trivy-scan:
+  #   uses: ./.github/workflows/trivy.yaml
+  
+  # testing:
+  #   uses: ./.github/workflows/testing.yaml
+  
+  # deploy-to-acr:
+  #   uses: ./.github/workflows/deploy.yaml
