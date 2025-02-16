@@ -27,7 +27,7 @@ jobs:
           coverage html  # Generates an HTML report in the `htmlcov` directory
 
       - name: Upload HTML coverage report as artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: html-coverage-report
           path: htmlcov/  # Upload the entire `htmlcov` directory
