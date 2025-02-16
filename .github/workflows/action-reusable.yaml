@@ -8,6 +8,8 @@ jobs:
     uses: ./.github/workflows/build-images.yaml
   
   trivy-scan:
+    needs:
+      - build-docker-images
     uses: ./.github/workflows/trivy.yaml
   
   # testing:
@@ -15,6 +17,5 @@ jobs:
   
   deploy-to-acr:
     needs:
-      - build-docker-images
       - trivy-scan
     uses: ./.github/workflows/deploy.yaml
