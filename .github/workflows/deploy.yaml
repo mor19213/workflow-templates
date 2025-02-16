@@ -10,7 +10,6 @@ env:
 jobs:
   push-image:
     runs-on: ubuntu-latest
-    needs: build-image
     permissions:
       packages: write
       id-token: write
