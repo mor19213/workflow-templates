@@ -26,8 +26,8 @@ jobs:
           coverage run --source='.' manage.py test  # Run Django tests with coverage
           coverage xml  # Generate an XML report
 
-      - name: Upload coverage report
-        uses: codecov/codecov-action@v3
+      - name: Upload coverage report as artifact
+        uses: actions/upload-artifact@v3
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}  # Optional: Only needed for private repositories
-          file: ./coverage.xml                 # Path to the coverage report file
+          name: coverage-report
+          path: coverage.xml
