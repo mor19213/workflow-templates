@@ -9,9 +9,10 @@ env:
 
 jobs:
   build-image:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest 
     permissions:
-      contents: read
+      packages: write
+      id-token: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -64,7 +65,5 @@ jobs:
         run: docker load -i /tmp/docker-image.tar
 
       - name: Push Docker image
-        uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
-        with:
-          push: true
-          tags: latest
+        run: |
+          docker push ghcr.io/mor19213/devsu-test:latest
