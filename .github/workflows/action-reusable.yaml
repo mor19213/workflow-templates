@@ -4,19 +4,32 @@ on:
   workflow_call:
 
 jobs:
+  # Build Docker image
   build-docker-image:
     uses: ./.github/workflows/build-images.yaml
   
+  # Vulnerability Scan
   trivy-scan:
     needs:
       - build-docker-image
     uses: ./.github/workflows/trivy.yaml
   
+  # Static Code Analysis
+  static-analysis:
+    uses: ./.github/workflows/codeql.yaml
+  
+  # Linter
+  linter:
+    uses: ./.github/workflows/lint.yaml
+  
+  # Unit Testing
   unit-testing:
     uses: ./.github/workflows/testing.yaml
   
   deploy-to-acr:
     needs:
       - trivy-scan
+      - static-analysis
+      - linter
       - unit-testing
     uses: ./.github/workflows/deploy.yaml
