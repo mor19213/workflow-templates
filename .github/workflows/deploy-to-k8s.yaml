@@ -34,5 +34,5 @@ jobs:
           helm upgrade --install devsu-test ./microservice-chart \
             --set image.repository=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} \
             --set image.tag=${{ github.sha }} \
-            --set env.DJANGO_SECRET_KEY=${{ secrets.DJANGO_SECRET_KEY }} \
-            --set env.DATABASE_NAME=${{ secrets.DATABASE_NAME }}
+            --set env.DJANGO_SECRET_KEY="${{ secrets.DJANGO_SECRET_KEY }}" \
+            --set env.DATABASE_NAME="${{ secrets.DATABASE_NAME }}"
