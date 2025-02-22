@@ -32,4 +32,4 @@ jobs:
 
       - name: Push Docker image
         run: |
-          docker push ghcr.io/mor19213/devsu-test:latest
+          docker push ghcr.io/mor19213/devsu-test:${{ github.sha }}

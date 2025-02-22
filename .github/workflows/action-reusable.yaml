@@ -33,3 +33,8 @@ jobs:
       - linter
       - unit-testing
     uses: ./.github/workflows/deploy.yaml
+
+  deploy-to-k8s:
+    needs:
+      - deploy-to-acr
+    uses: ./.github/workflows/deploy-to-k8s.yaml

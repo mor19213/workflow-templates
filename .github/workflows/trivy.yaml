@@ -35,7 +35,7 @@ jobs:
       - name: Vulnerability scan
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: "ghcr.io/mor19213/devsu-test:latest"
+          image-ref: "ghcr.io/mor19213/devsu-test:${{ github.sha }}"
           format: 'table'
           scanners: vuln
           exit-code: '1'
