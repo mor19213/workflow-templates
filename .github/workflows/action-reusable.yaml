@@ -38,3 +38,4 @@ jobs:
     needs:
       - deploy-to-acr
     uses: ./.github/workflows/deploy-to-k8s.yaml
+    secrets: inherit
