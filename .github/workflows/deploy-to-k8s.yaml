@@ -31,6 +31,6 @@ jobs:
 
       - name: Deploy Helm chart
         run: |
-          helm upgrade --install my-release ./my-chart \
+          helm upgrade --install devsu-test ./microservice-chart \
             --set image.repository=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} \
             --set image.tag=${{ github.sha }}
